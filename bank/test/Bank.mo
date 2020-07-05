@@ -1,4 +1,10 @@
-import Security "../src/Security";
+import HashMap "mo:base/HashMap";
+import Principal "mo:base/Principal";
+
+// import Bank "../src/bank/Main";
+import Common "../src/bank/Common";
+// import Security "../src/bank/Security";
+import Types "../src/bank/Types";
 
 actor {
 
@@ -16,13 +22,11 @@ actor {
   // Helpers
 
   // TODO: Add Principal/Account KV pairs.
-  func setup() {
-    accounts.put(12345, 12345);
-  };
+  func setup() {};
 
   func tearDown() {
-    for (entry in accounts) {
-      accounts.delete(entry.key);
+    for ((entryKey, _) in accounts.iter()) {
+      ignore accounts.del(entryKey);
     };
   };
 

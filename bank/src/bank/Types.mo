@@ -3,15 +3,21 @@ import List "mo:base/List";
 
 module {
 
-  public type Status = { #Success; #AccountError; #BalanceError; };
+  public type Error = {
+    #success;
+    #accountNotFound;
+    #insufficientBalance;
+    #noPermission;
+    #allowanceDiscrepancy;
+  };
 
   public type AccountEntries = HashMap.HashMap<Principal, Account>;
-  public type AllowListEntries = HashMap.HashMap<Principal, AllowList>;
-  public type AllowList = List.List<Allowance>;
 
   public type Account = {
-    balance: Nat;
-    txns: List.List<Principal>;
+    var balance: Nat;
+    var txns: List.List<Txn>;
+    var allowances: HashMap.HashMap<Principal, Nat>;
+    var lockedFunds: Nat;
   };
 
   public type Allowance = {
@@ -19,7 +25,7 @@ module {
     amount: Nat;
   };
 
-  type Txn = {
+  public type Txn = {
     counterparty: Principal;
     amount: Int;
   };

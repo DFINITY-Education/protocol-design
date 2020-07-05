@@ -1,9 +1,24 @@
 {
   "canisters": {
-    "bank": {
-      "main": "src/main.mo"
+    "Bank": {
+      "main": "src/bank/Main.mo"
     },
-    "test": {
+    "BankTest": {
+      "main": "test/Bank.mo"
+    },
+    "PaymentProcessor": {
+      "main": "src/paymentProcessor/Main.mo"
+    },
+    "PaymentProcessorTest": {
+      "main": "test/PaymentProcessor.mo"
+    },
+    "Vendor": {
+      "main": "src/vendor/Main.mo"
+    },
+    "VendorTest": {
+      "main": "test/Vendor.mo"
+    },
+    "Test": {
       "main": "test/Main.mo"
     }
   },
