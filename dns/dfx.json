@@ -1,7 +1,10 @@
 {
   "canisters": {
-    "dns": {
+    "Dns": {
       "main": "src/main.mo"
+    },
+    "Test": {
+      "main": "test/main.mo"
     }
   },
   "defaults": {
