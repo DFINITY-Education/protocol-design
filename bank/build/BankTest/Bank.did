@@ -1,0 +1,5 @@
+service : {
+  "run": () -> () oneway;
+  "runAccountExistsAndGetBalanceTest": () -> ();
+  "setup": () -> () oneway;
+}

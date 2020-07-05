@@ -1,0 +1,11 @@
+service : {
+  "burnSupply": (nat) -> ();
+  "checkBalance": (principal) -> (nat) query;
+  "deposit": (nat) -> ();
+  "getTotalSupply": () -> (nat) query;
+  "grantAllowance": (principal, nat) -> (bool);
+  "mintSupply": (nat) -> ();
+  "spendAllowance": (principal, principal, nat) -> (bool);
+  "transferAmount": (principal, nat) -> (bool);
+  "withdraw": (nat) -> (nat);
+}

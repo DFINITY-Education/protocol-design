@@ -7,7 +7,7 @@ actor {
   public func run() {
     BankTest.run();
     PaymentProcessorTest.run();
-    VendorTest.run()
+    VendorTest.run();
   };
 
 }

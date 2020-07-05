@@ -1,33 +1,41 @@
 import HashMap "mo:base/HashMap";
-import Principal "mo:base/Principal";
+import Option "mo:base/Option";
 
 // import Bank "../src/bank/Main";
-import Common "../src/bank/Common";
+import Database "../src/bank/Database";
 // import Security "../src/bank/Security";
 import Types "../src/bank/Types";
+import Utils "../src/bank/Utils";
 
 actor {
 
-  var accounts = HashMap.HashMap<Principal, Types.Account>(1, Common.principalEq, Principal.hash);
+  var db: Database.Database = Database.Database();
+  // TODO: How to use Principals?
+  private let accountList: [Principal] = [
+    // "ic:EE8110735D21E9D3EF"
+  ];
 
-  // TODO: Try to check for real account and succeed. Try to check for non-existent account and fail.
-  func runAccountExistsAndGetBalanceTest() {
+  // TODO: public?
+  // TODO: Test negative case.
+  public shared(msg) func runAccountExistsAndGetBalanceTest() : async () {
     setup();
 
-    assert (true);
+    let positiveTestResult = db.findAccount(msg.caller);
+    Option.assertSome(positiveTestResult);
+    assert(Utils.accountEq(Option.unwrap<Types.Account>(positiveTestResult), Utils.newAccount(0)));
 
     tearDown();
   };
 
   // Helpers
 
-  // TODO: Add Principal/Account KV pairs.
-  func setup() {};
+  // TODO: public?
+  public shared(msg) func setup() {
+    db.updateAccount(msg.caller, Utils.newAccount(0));
+  };
 
   func tearDown() {
-    for ((entryKey, _) in accounts.iter()) {
-      ignore accounts.del(entryKey);
-    };
+    db.clear();
   };
 
   // Test Hook
@@ -35,7 +43,7 @@ actor {
   let tests = [runAccountExistsAndGetBalanceTest];
 
   public func run() {
-    for (test in tests.vals()) test()
+    for (test in tests.vals()) await test()
   };
 
 }

@@ -3,36 +3,41 @@ import HashMap "mo:base/HashMap";
 import List "mo:base/List";
 import Principal "mo:base/Principal";
 
-import Common "./Common";
+import Database "./Database";
 import Security "./Security";
 import Types "./Types";
+import Utils "./Utils";
 
 actor {
 
   var totalSupply: Nat = 0;
-  // TODO: Fix this to use the definitions in `Types`
-  var accounts = HashMap.HashMap<Principal, Types.Account>(1, Common.principalEq, Principal.hash);
+  var db: Database.Database = Database.Database();
 
   // Get the total currency supply minted by the Banker.
-  public func getTotalSupply() : async (Nat) {
+  public query func getTotalSupply() : async (Nat) {
     totalSupply
+  };
+
+  // Checks that a user's account exists and, if so, retrieves its balance.
+  // TODO: Use Error type here.
+  public query func checkBalance(owner: Principal) : async (Nat) {
+    let result = db.findAccount(owner);
+    switch result {
+      case (?account) account.balance;
+      case (_) 0;
+    }
   };
 
   // Increment caller's balance by |amount|
   public shared(msg) func deposit(amount: Nat) : async () {
-    let result = accounts.get(msg.caller);
+    let result = db.findAccount(msg.caller);
     switch result {
       case (?account) {
         account.balance += amount;
-        ignore accounts.set(msg.caller, account);
+        db.updateAccount(msg.caller, account);
       };
       case (null) {
-        ignore accounts.set(msg.caller, {
-          var balance = amount;
-          var txns = List.nil<Types.Txn>();
-          var allowances = HashMap.HashMap<Principal, Nat>(1, Common.principalEq, Principal.hash);
-          var lockedFunds = 0;
-        });
+        db.updateAccount(msg.caller, Utils.newAccount(amount));
       };
     }
   };
@@ -40,26 +45,17 @@ actor {
   // Decrement caller's balance by |amount|.
   // Balance cannot go below zero.
   // Returns old balance if operation succeeds and 0 if account doesn't exist.
-  // TODO: Use Error type here.
+  // TODO: Use Error type here. No need for oldBalance.
   public shared(msg) func withdraw(amount: Nat) : async (Nat) {
-    let result = accounts.get(msg.caller);
+    let result = db.findAccount(msg.caller);
     switch result {
       case (?account) {
-        account.balance := Common.safeSub(account.balance, amount);
-        let oldAccount = accounts.set(msg.caller, account);
-        account.balance
+        let oldBalance = account.balance;
+        account.balance := Utils.safeSub(account.balance, amount);
+        db.updateAccount(msg.caller, account);
+        oldBalance
       };
       case (null) 0
-    }
-  };
-
-  // Checks that a user's account exists and, if so, retrieves its balance.
-  // TODO: Use Error type here.
-  public func checkBalance(owner: Principal) : async (Nat) {
-    let result = accounts.get(owner);
-    switch result {
-      case (?account) account.balance;
-      case (_) 0;
     }
   };
 
@@ -67,17 +63,17 @@ actor {
   // Increments the payee's balance by |amount| and decrements the account owner's
   // by the same amount.
   public shared(msg) func transferAmount(to: Principal, amount: Nat) : async (Bool) {
-    let fromAccountResult = accounts.get(msg.caller);
-    let toAccountResult = accounts.get(to);
+    let fromAccountResult = db.findAccount(msg.caller);
+    let toAccountResult = db.findAccount(to);
 
     switch (fromAccountResult, toAccountResult) {
       case (?fromAccount, ?toAccount) {
-        if (Common.spendableBalance(fromAccount) < amount) { return false; };
+        if (Utils.spendableBalance(fromAccount) < amount) { return false; };
 
         fromAccount.balance -= amount;
         toAccount.balance += amount;
-        ignore accounts.set(msg.caller, fromAccount);
-        ignore accounts.set(to, toAccount);
+        db.updateAccount(msg.caller, fromAccount);
+        db.updateAccount(to, toAccount);
         true
       };
       case (_) false;
@@ -88,13 +84,14 @@ actor {
   // balance.
   // TODO: Lock some of the caller's balance equal to |amount|.
   public shared(msg) func grantAllowance(to: Principal, amount: Nat) : async (Bool) {
-    let fromAccountResult = accounts.get(msg.caller);
+    let fromAccountResult = db.findAccount(msg.caller);
 
     switch (fromAccountResult) {
       case (?account) {
-        if (account.balance < Common.spendableBalance(account)) { return false; };
+        if (account.balance < Utils.spendableBalance(account)) { return false; };
 
-        ignore account.allowances.set(to, amount);
+        // TODO: 
+        db.updateAllowance(account, to, amount);
         true
       };
       case (_) false;
@@ -103,8 +100,8 @@ actor {
 
   // TODO: Follow DRY and consolidate into one helper.
   public shared(msg) func spendAllowance(from: Principal, to: Principal, amount: Nat) : async (Bool) {
-    let fromAccountResult = accounts.get(from);
-    let toAccountResult = accounts.get(to);
+    let fromAccountResult = db.findAccount(from);
+    let toAccountResult = db.findAccount(to);
 
     switch (fromAccountResult, toAccountResult) {
       case (?fromAccount, ?toAccount) {
@@ -113,8 +110,8 @@ actor {
           case (?fromAllowance) {
             fromAccount.balance -= amount;
             toAccount.balance += amount;
-            ignore accounts.set(msg.caller, fromAccount);
-            ignore accounts.set(to, toAccount);
+            db.updateAccount(msg.caller, fromAccount);
+            db.updateAccount(to, toAccount);
 
             let newFromAllowance = fromAllowance - amount;
             if (newFromAllowance == 0) {
@@ -139,7 +136,7 @@ actor {
   };
 
   public func burnSupply(amount: Nat) : async () {
-    totalSupply := Common.safeSub(totalSupply, amount);
+    totalSupply := Utils.safeSub(totalSupply, amount);
   };
 
 };
