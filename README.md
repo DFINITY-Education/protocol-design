@@ -14,7 +14,9 @@ The bank canister behaves as you would expect a regular bank should, with some a
 
 The following test should run to completion:
 ```
-dfx run test
+dfx build
+dfx canister install --all
+dfx canister call Test run
 ```
 
 # DNS Documentation
@@ -38,5 +40,7 @@ Complete the protocol by filling out the `resolveSearch(...)` method.
 
 The following test should run to completion:
 ```
-dfx run test
+dfx build
+dfx canister install --all
+dfx canister call Test run
 ```
