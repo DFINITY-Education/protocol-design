@@ -3,7 +3,7 @@ import Option "mo:base/Option";
 
 // import Bank "../src/bank/Main";
 import Database "../src/bank/Database";
-// import Security "../src/bank/Security";
+import Permissions "../src/bank/Permissions";
 import Types "../src/bank/Types";
 import Utils "../src/bank/Utils";
 

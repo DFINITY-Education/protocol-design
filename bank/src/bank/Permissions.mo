@@ -11,24 +11,27 @@ module {
   // TODO: Is there a way to refer to actor-scopes vars from module scope?
 
   type UT = Types.UserType;
-  type List<T> = List.List<T>;
+  // type List<T> = List.List<T>;
 
   public class Permissions() {
 
-    let permissions = HashMap.HashMap<UT, List<Principal>>(1, utEq, utHash);
+    let permissions = HashMap.HashMap<UT, List.List<Principal>>(1, utEq, utHash);
 
     public func hasPermission(user: Principal, userType: UT) : async Bool {
-      switch (permissions.get(userType)) {
-        case (?userList) userList.some<Principal>(func (p: Principal) : Bool { p == user} );
-        case (null) false;
-      }
+      // TODO: List.take doesn't work.
+      // switch (permissions.get(userType)) {
+      //   case (?userList) List.take<Principal>(userList, func (p: Principal) : Bool { p == user} );
+      //   case (null) false;
+      // }
+      return true;
     };
 
     public func addToGroup<G>(user: Principal, userType: UT) : async () {
-      switch (permissions.get(userType)) {
-        case (?userList) permissions.set(userType, userList.push<Principal>(user));
-        case (null) permissions.set(userType, List.make<Principal>(user));
-      };
+      // TODO: List.make doesn't work.
+      // switch (permissions.get(userType)) {
+      //   case (?userList) permissions.set(userType, userList.push<Principal>(user));
+      //   case (null) permissions.set(userType, List.make<Principal>(user));
+      // };
     };
 
   };

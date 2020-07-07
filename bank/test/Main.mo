@@ -1,12 +1,12 @@
 import BankTest "canister:BankTest";
-import PaymentProcessorTest "canister:PaymentProcessorTest";
+import CreditProviderTest "canister:CreditProviderTest";
 import ShopTest "canister:ShopTest";
 
 actor {
 
   public func run() {
     BankTest.run();
-    PaymentProcessorTest.run();
+    CreditProviderTest.run();
     ShopTest.run();
   };
 
