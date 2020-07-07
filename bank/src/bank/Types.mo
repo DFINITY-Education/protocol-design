@@ -4,11 +4,15 @@ import List "mo:base/List";
 module {
 
   public type Error = {
-    #success;
     #accountNotFound;
+    #allowanceDiscrepancy;
     #insufficientBalance;
     #noPermission;
-    #allowanceDiscrepancy;
+  };
+
+  public type UserType = {
+    #super;
+    #user;
   };
 
   public type AccountEntries = HashMap.HashMap<Principal, Account>;
@@ -18,11 +22,6 @@ module {
     var txns: List.List<Txn>;
     var allowances: HashMap.HashMap<Principal, Nat>;
     var lockedFunds: Nat;
-  };
-
-  public type Allowance = {
-    account: Principal;
-    amount: Nat;
   };
 
   public type Txn = {

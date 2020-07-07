@@ -12,11 +12,11 @@
     "PaymentProcessorTest": {
       "main": "test/PaymentProcessor.mo"
     },
-    "Vendor": {
-      "main": "src/vendor/Main.mo"
+    "Shop": {
+      "main": "src/shop/Main.mo"
     },
-    "VendorTest": {
-      "main": "test/Vendor.mo"
+    "ShopTest": {
+      "main": "test/Shop.mo"
     },
     "Test": {
       "main": "test/Main.mo"

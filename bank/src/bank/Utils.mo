@@ -9,17 +9,17 @@ module {
   type Account = Types.Account;
   type Txn = Types.Txn;
 
-  public func principalEq(lhs: Principal, rhs: Principal) : (Bool) {
+  public func principalEq(lhs: Principal, rhs: Principal) : Bool {
     return lhs == rhs;
   };
 
-  public func txnEq(lhs: Txn, rhs: Txn) : (Bool) {
+  public func txnEq(lhs: Txn, rhs: Txn) : Bool {
     return lhs.counterparty == rhs.counterparty and
             lhs.amount == rhs.amount;
   };
 
   // TODO: Not the best.
-  public func accountEq(lhs: Account, rhs: Account) : (Bool) {
+  public func accountEq(lhs: Account, rhs: Account) : Bool {
     return lhs.balance == rhs.balance and
             List.isEq<Txn>(lhs.txns, rhs.txns, txnEq) and
             lhs.lockedFunds == rhs.lockedFunds;
@@ -30,7 +30,7 @@ module {
     else 0
   };
 
-  public func newAccount(initialAmount : Nat) : (Account) {
+  public func newAccount(initialAmount : Nat) : Account {
     {
       var balance = initialAmount;
       var txns = List.nil<Txn>();
@@ -39,7 +39,7 @@ module {
     }
   };
 
-  public func spendableBalance(account: Account) : (Nat) {
+  public func spendableBalance(account: Account) : Nat {
     account.balance - account.lockedFunds
   };
 
