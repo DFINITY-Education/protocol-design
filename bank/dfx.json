@@ -6,11 +6,11 @@
     "BankTest": {
       "main": "test/Bank.mo"
     },
-    "PaymentProcessor": {
-      "main": "src/paymentProcessor/Main.mo"
+    "CreditProvider": {
+      "main": "src/creditProvider/Main.mo"
     },
-    "PaymentProcessorTest": {
-      "main": "test/PaymentProcessor.mo"
+    "CreditProviderTest": {
+      "main": "test/CreditProvider.mo"
     },
     "Shop": {
       "main": "src/shop/Main.mo"
