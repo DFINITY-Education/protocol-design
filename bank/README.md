@@ -44,7 +44,7 @@ dfx canister call ShopTest run
 ```
 
 ### Bonus
-Complete all applications under `src/`. The following tests should run to completion:
+Complete all applications under `src/`. The following test should run to completion:
 ```bash
 dfx canister call Test run
 ()

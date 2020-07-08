@@ -1,3 +1,5 @@
+**The code has not been updated**
+
 # Module 2: Starting off Simple with DNS
 
 Computers use an **Internet Protocol** (IP) address to locate and distinguish websites, but it isn’t exactly convenient for humans to memorize a long string of digits to access their desired websites. Instead, we simply type in the website’s address to our browser and let the computer take care of the rest. **Domain Name System** (DNS) is a protocol that translates domain names - like [www.example.com](w) - into their corresponding IP addresses. In essence, think of DNS as a phonebook for the Internet; in this analogy, contact names are to web domains as phone numbers are to IP addresses.
@@ -29,10 +31,12 @@ Installing code for canister BankTest, with canister_id: ...
 ()
 ```
 
-Feel free to experiment with the canister through the CLI! Here are some ideas to get you started:
+Feel free to experiment with each canister's public methods through the CLI. Here are some ideas to get you started:
 ```bash
-dfx canister call dns resolveSearch '("www.dfinity.org")'
+> dfx canister call dns resolveSearch '("www.dfinity.org")'
+("104.17.224.20")
 ```
 ```bash
-dfx canister call dns isCached '("www.dfinity.org")'
+> dfx canister call dns isCached '("www.dfinity.org")'
+(true)
 ```
