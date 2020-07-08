@@ -1,7 +1,7 @@
 # Table of Contents
 - [Module 2: Starting off Simple with DNS](./dns)
 - [Module 3: Banking as a Protocol](./bank)
-- [Module 4: Building on Top of a Protocol](./bank)
+- [Module 4: Building on Top of a Protocol](./bank#module-4-building-on-top-of-a-protocol)
 
 # TODO
 * DNS
