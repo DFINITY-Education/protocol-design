@@ -16,6 +16,11 @@ actor DNS {
     await ask(root)
   };
 
+  /// [TODO]
+  /// Args:
+  ///   
+  /// Returns:
+  ///   
   func ask() : async IP_address {
     TLD = parse_url();
     for (i in TLD) {
@@ -23,6 +28,7 @@ actor DNS {
       if (result != null) return result;
     };
   };
+
   /// Splits a |url| into its component domain labels (separated by ".")
   /// Args:
   ///   |url|   The URl to parse
