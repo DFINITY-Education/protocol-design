@@ -46,4 +46,4 @@ actor {
     for (test in tests.vals()) await test()
   };
 
-}
+};

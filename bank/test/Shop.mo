@@ -8,4 +8,4 @@ actor {
     for (test in tests.vals()) test()
   };
 
-}
+};

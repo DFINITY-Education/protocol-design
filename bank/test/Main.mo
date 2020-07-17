@@ -10,4 +10,4 @@ actor {
     ShopTest.run();
   };
 
-}
+};

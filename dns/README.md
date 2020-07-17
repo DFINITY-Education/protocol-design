@@ -1,5 +1,3 @@
-**The code has not been updated**
-
 # Module 2: Starting off Simple with DNS
 
 Computers use an **Internet Protocol** (IP) address to locate and distinguish websites, but it isn’t exactly convenient for humans to memorize a long string of digits to access their desired websites. Instead, we simply type in the website’s address to our browser and let the computer take care of the rest. **Domain Name System** (DNS) is a protocol that translates domain names - like [www.example.com](w) - into their corresponding IP addresses. In essence, think of DNS as a phonebook for the Internet; in this analogy, contact names are to web domains as phone numbers are to IP addresses.
@@ -17,7 +15,7 @@ The resolver begins by checking for the queried domain name in its local cache. 
 4. The Authoritative Name Server returns the IP address for the full domain (in this case www.example.com) to the DNS Resolver, which allows the user to connect to that server using the IP address.
 
 ## YOUR TASK
-You will be implementing a simplified version of the DNS protocol described above. Read and digest the code in _src/resolver_ before starting! Complete the protocol by filling out the `resolveSearch(...)` method. You'll need to use your understanding of the DNS protocol to decide what calls the resolver should make to which server.
+You will be implementing a simplified version of the DNS protocol described above. Read and digest the code in _src/resolver_ before starting! Complete the protocol by filling out the `resolve(...)` method. You'll need to use your understanding of the DNS protocol to decide what calls the resolver should make to which server.
 
 The following test should run to completion:
 ```bash
