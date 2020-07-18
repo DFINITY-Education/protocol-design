@@ -6,14 +6,15 @@
 # TODO
 * DNS
   * Build `Resolver` canister
-  * Squash bugs
-  * Build `Server` interface
+  * Use `Result` return types.
+  * Build interface for servers instead of duplicating code.
   * Add tests
 * Bank
-  * Squash bugs
+  * Squash "static expression" bug
+  * More ergonomic actor-related usage in tests
   * Write `CreditProvider` canister
   * Write `Shop` canister
   * Build additional apps on top of `Bank` canister
-  * Add tests
+  * Add more tests
 * Other
   * Some back-reference to maintain continuity from the _Module 1_.

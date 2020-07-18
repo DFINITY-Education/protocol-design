@@ -36,7 +36,7 @@ module {
     ///   respective Principals. Each value may be null if the corresponding
     ///   account does not exist in |localDB|.
     public func findMultipleAccounts(accountHolderList: [Principal]) : [?Account] {
-      Array.map<Principal, ?Account>(findAccount, accountHolderList);
+      Array.map<Principal, ?Account>(accountHolderList, findAccount)
     };
 
     /// Sets entire Account of |accountHolder| to |account|.
@@ -45,13 +45,13 @@ module {
     ///   |accountHolder|   The Principal whose Account will be updated.
     ///   |account|         The updated Account.
     public func updateAccount(accountHolder: Principal, account: Account) {
-      ignore localDB.set(accountHolder, account);
+      localDB.put(accountHolder, account);
     };
 
     /// Deletes all entries in |localDB|.
     public func clear() {
-      for ((entryKey, _) in localDB.iter()) {
-        ignore localDB.del(entryKey);
+      for ((entryKey, _) in localDB.entries()) {
+        localDB.delete(entryKey);
       };
     };
 

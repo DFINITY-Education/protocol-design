@@ -21,7 +21,7 @@ module {
   // TODO: Not the best.
   public func accountEq(lhs: Account, rhs: Account) : Bool {
     return lhs.balance == rhs.balance and
-            List.isEq<Txn>(lhs.txns, rhs.txns, txnEq) and
+            List.equal<Txn>(lhs.txns, rhs.txns, txnEq) and
             lhs.lockedFunds == rhs.lockedFunds;
   };
 

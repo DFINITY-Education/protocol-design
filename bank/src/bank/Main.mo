@@ -114,8 +114,8 @@ actor {
       case (?account) {
         if (Utils.spendableBalance(account) < amount) { return #err(#insufficientBalance); };
 
-        ignore account.allowances.set(to, amount);
-        ignore account.lockedFunds += amount;
+        account.allowances.put(to, amount);
+        account.lockedFunds += amount;
         db.updateAccount(msg.caller, account);
         #ok()
       };
@@ -148,9 +148,9 @@ actor {
             toAccount.balance += amount;
 
             if (fromAllowance == amount) {
-              ignore fromAccount.allowances.del(msg.caller);
+              fromAccount.allowances.delete(msg.caller);
             } else {
-              ignore fromAccount.allowances.set(msg.caller, fromAllowance - amount);
+              fromAccount.allowances.put(msg.caller, fromAllowance - amount);
             };
 
             db.updateAccount(msg.caller, fromAccount);
@@ -172,13 +172,24 @@ actor {
     switch banker {
       case (null) {
         banker := ?msg.caller;
-        // TODO: Calling ignore instead of await here also works?
         await permissions.addToGroup(msg.caller, #super);
 
         #ok()
       };
       case (_) #err(#noPermission);
     }
+  };
+
+  public shared(msg) func openAccount(accountHolder: Principal) {
+    if (await permissions.hasPermission(msg.caller, #super)) {
+       db.updateAccount(accountHolder, Utils.newAccount(0));
+    };
+  };
+
+  public shared(msg) func wipeAccounts() {
+    if (await permissions.hasPermission(msg.caller, #super)) {
+       db.clear();
+    };
   };
 
   /// Increments |totalSupply| by |amount|.

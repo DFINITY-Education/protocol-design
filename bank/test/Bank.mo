@@ -1,23 +1,20 @@
 import HashMap "mo:base/HashMap";
 import Option "mo:base/Option";
+import Principal "mo:base/Principal";
 
-// import Bank "../src/bank/Main";
-import Database "../src/bank/Database";
-import Permissions "../src/bank/Permissions";
+import Bank "../src/bank/Main";
 import Types "../src/bank/Types";
 import Utils "../src/bank/Utils";
 
 actor {
 
-  var db: Database.Database = Database.Database();
-  // TODO: How to use Principals?
   private let accountList: [Principal] = [
-    // "ic:EE8110735D21E9D3EF"
+    Principal.fromText("ic:EE8110735D21E9D3EF"),
+    Principal.fromText("ic:PUIY24FTF64GHV2B21")
   ];
 
-  // TODO: public?
   // TODO: Test negative case.
-  public shared(msg) func runAccountExistsAndGetBalanceTest() : async () {
+  func runAccountExistsAndGetBalanceTest() : async () {
     setup();
 
     let positiveTestResult = db.findAccount(msg.caller);
@@ -29,13 +26,15 @@ actor {
 
   // Helpers
 
-  // TODO: public?
-  public shared(msg) func setup() {
-    db.updateAccount(msg.caller, Utils.newAccount(0));
+  func setup() {
+    switch (Bank.becomeBanker()) {
+      case (#ok) { for (account in accountList) { Bank.openAccount(account); }; };
+      case (#err) { Log.print("BankTest.setup - Setup failed."); };
+    };
   };
 
   func tearDown() {
-    db.clear();
+    Bank.wipeAccounts();
   };
 
   // Test Hook
@@ -43,7 +42,11 @@ actor {
   let tests = [runAccountExistsAndGetBalanceTest];
 
   public func run() {
-    for (test in tests.vals()) await test()
+    for (test in tests.vals()) {
+      setup();
+      await test();
+      tearDown();
+    };
   };
 
 };
