@@ -24,10 +24,12 @@ The following test should run to completion:
 ```bash
 > dfx build
 Building canisters...
+
 > dfx canister install --all
 Installing code for canister Bank, with canister_id ic:ABCDEFGHIJKLMNOPQR
 Installing code for canister BankTest, with canister_id: ...
 ...
+
 > dfx canister call Test run
 ()
 ```
