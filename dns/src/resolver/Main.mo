@@ -8,55 +8,50 @@ import Root "canister:Root";
 
 import Parsing "./Parsing";
 import Types "../Types";
+import NameServer "../nameServer/Main";
 
 actor {
 
-  let cache = HashMap.HashMap<Text, Types.IpAddress>(1, Text.equal, Text.hash);
-  // let root: Principal = "???";
+  type Domain = Types.Domain;
 
-  public func resolve(url: Types.URL) : async Result<Types.IpAddress, Error> {
-    switch (cache.get(url)) {
+  let cache = HashMap.HashMap<Domain, Principal>(1, Text.equal, Text.hash);
+
+  public func resolve(domain: Domain) : async Result<Principal, Error> {
+    switch (cache.get(domain)) {
       case (?addr) { return #ok(addr) };
       case (null) {
-        var parsedUrl = parseUrl(url);
+        var parsedDomain = parseDomain(domain);
         var server = Principal.fromActor(Root);
-        var counter = List.size<Text>(parsedUrl);
+        var counter = List.size<Text>(parsedDomain);
         while (counter > 0) {
-          server := switch (List.last<Text>(parsedUrl)) {
+          server := switch (List.last<Text>(parsedDomain)) {
             case (null) { return #err(#addressNotFound) };
             case (?subdomain) { await ask(subdomain, server) };
           };
           counter -= 1;
-          parsedUrl := List.drop<Text>(parsedUrl, counter);
+          parsedDomain := List.drop<Text>(parsedDomain, counter);
         };
-        let addr = askForIp(parsedUrl[0], server);
-        cache.put(url, addr);
+        cache.put(domain, server);
 
-        #ok(addr)
+        #ok(server)
       };
     }
   };
 
-  func ask(url: Types.URL, who: Principal) : async Result<Principal, Error> {
+  func ask(domain: Domain, who: Principal) : async Result<Principal, Error> {
     try {
-      #ok(actor(Principal.toText(who)).ask(url))
+      let server = actor (Principal.toText(who)) : actor {
+        ask : Types.Domain -> async ?Principal;
+      };
+      #ok(server.ask(domain))
     } catch _ {
       Log.error("Canister unreachable!")
       #err(addressNotFound)
     };
   };
 
-  func askForIp(url: Types.URL, who: Principal) : async Result<Types.IpAddress, Error> {
-    try {
-      #ok(actor(Principal.toText(who)).ask(url))
-    } catch _ {
-      Log.error("Canister unreachable!")
-      #err(addressNotFound)
-    };
-  };
-
-  func parseUrl(url: Types.URL) : List.List<Text> {
-    Parsing.split(url, ".")
+  func parseDomain(domain: Domain) : List.List<Text> {
+    Parsing.split(domain, ".")
   };
 
 };

@@ -5,12 +5,14 @@ import Types "./Types";
 
 module {
 
-  public func urlEq(lhs: Types.URL, rhs: Types.URL) : Bool {
+  type Domain = Types.Domain;
+
+  public func domainEq(lhs: Domain, rhs: Domain) : Bool {
     return lhs == rhs;
   };
 
-  public func urlHash(url: Types.URL) : Hash.Hash {
-    return Text.hash(url);
+  public func domainHash(domain: Domain) : Hash.Hash {
+    return Text.hash(domain);
   };
 
 };

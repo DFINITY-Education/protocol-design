@@ -5,16 +5,15 @@
 
 # TODO
 * DNS
-  * Build `Resolver` canister
-  * Use `Result` return types.
-  * Build interface for servers instead of duplicating code.
+  * New features:
+    * Cache validation
+    * Server ownership
   * Add tests
 * Bank
   * Squash "static expression" bug
   * More ergonomic actor-related usage in tests
   * Write `CreditProvider` canister
   * Write `Shop` canister
-  * Build additional apps on top of `Bank` canister
   * Add more tests
 * Other
-  * Some back-reference to maintain continuity from the _Module 1_.
+  * Some back-reference to maintain continuity from the _Module 1_

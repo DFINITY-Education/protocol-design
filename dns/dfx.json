@@ -1,13 +1,10 @@
 {
   "canisters": {
-    "Authoritative": {
-      "main": "src/authoritative/Main.mo"
-    },
     "Resolver": {
       "main": "src/resolver/Main.mo"
     },
     "Root": {
-      "main": "src/root/Main.mo"
+      "main": "src/nameServer/Main.mo"
     },
     "Test": {
       "main": "test/Main.mo"
