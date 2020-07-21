@@ -14,8 +14,11 @@ The resolver begins by checking for the queried domain name in its local cache. 
 3. The TLD Name Server refers the Resolver to an **Authoritative Name Server**, which holds details for the main domain name, like “.example”.
 4. The Authoritative Name Server returns the IP address for the full domain (in this case www.example.com) to the DNS Resolver, which allows the user to connect to that server using the IP address.
 
-![DNS Lookup Process](https://miro.medium.com/max/1400/1*20lOJctutX1PTdWzYUbbZQ.png)
-**Placeholder Image**
+<p align="center">
+  <img src="https://miro.medium.com/max/1400/1*20lOJctutX1PTdWzYUbbZQ.png" />
+</p>
+
+/Placeholder Image?/
 
 ## YOUR TASK
 You will be implementing a simplified version of the DNS protocol described above. Read and digest the code in _src/resolver_ before starting! Complete the protocol by filling out the `resolve(...)` method. You'll need to use your understanding of the DNS protocol to decide what calls the resolver should make to which server.
