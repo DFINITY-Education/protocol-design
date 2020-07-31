@@ -18,8 +18,6 @@ The resolver begins by checking for the queried domain name in its local cache. 
   <img src="https://miro.medium.com/max/1400/1*20lOJctutX1PTdWzYUbbZQ.png" />
 </p>
 
-_Placeholder Image?_
-
 ## YOUR TASK
 You will be implementing a simplified version of the DNS protocol described above. Read and digest the code in _src/resolver_ before starting! Complete the protocol by filling out the `resolve(...)` method. You'll need to use your understanding of the DNS protocol to decide what calls the resolver should make to which server.
 
