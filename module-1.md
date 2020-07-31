@@ -1,5 +1,5 @@
 # Module 1: Intro to Protocols, the Internet, and the Internet Computer
-## What is a Protocol?
+### What is a Protocol?
 
 Imagine that you want to communicate a message to your friend in another room. What steps must you take to successfully relay this message and verify that it was received? Chances are, you first need to get their attention, then speak a language that they understand, and finally wait for a response. Similarly, computers and applications use a related process to send and receive messages through the use of a **protocol**.
 
@@ -8,12 +8,16 @@ A **protocol** is a set of rules that establish how electronic devices communica
 ### Packets
 As with any form of communication, there is a chance that the data being transmitted gets lost in the process. To increase the reliability and efficiency of data transfer, protocols divide each “message” into smaller pieces of data called **packets**. Each packet has a header, which contains information about the source and destination (akin to a postal address), and body, containing the data itself. If one packet is lost in the process, the device can just resend that one packet instead of resending the entire message. The receiving device reassembles the packets into the original message using the instructions provided by the protocol. 
 
-_Create a graphic to show (abstractly) how this works with a sender and receiver_
-[Sample graphic from https://afteracademy.com/blog/what-is-stop-and-wait-protocol]
-
 <p align=“center”>
   <img src=“https://s3.ap-south-1.amazonaws.com/afteracademy-server-uploads/what-is-stop-and-wait-protocol-example-03e731cda541ab63.jpg” />
 </p>
+
+<p align="center">
+  <img src="https://miro.medium.com/max/1400/1*20lOJctutX1PTdWzYUbbZQ.png" />
+</p>
+
+_Create a graphic to show (abstractly) how this works with a sender and receiver_
+[Sample graphic from https://afteracademy.com/blog/what-is-stop-and-wait-protocol]
 
 ## What is the Internet?
 
