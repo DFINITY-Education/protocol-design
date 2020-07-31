@@ -9,11 +9,7 @@ A **protocol** is a set of rules that establish how electronic devices communica
 As with any form of communication, there is a chance that the data being transmitted gets lost in the process. To increase the reliability and efficiency of data transfer, protocols divide each “message” into smaller pieces of data called **packets**. Each packet has a header, which contains information about the source and destination (akin to a postal address), and body, containing the data itself. If one packet is lost in the process, the device can just resend that one packet instead of resending the entire message. The receiving device reassembles the packets into the original message using the instructions provided by the protocol. 
 
 <p align=“center”>
-  <img src=“https://s3.ap-south-1.amazonaws.com/afteracademy-server-uploads/what-is-stop-and-wait-protocol-example-03e731cda541ab63.jpg” />
-</p>
-
-<p align="center">
-  <img src="https://miro.medium.com/max/1400/1*20lOJctutX1PTdWzYUbbZQ.png" />
+  <img src=“images/packets.jpg” />
 </p>
 
 _Create a graphic to show (abstractly) how this works with a sender and receiver_
@@ -25,7 +21,7 @@ _Create a graphic to show (abstractly) how this works with a sender and receiver
 The Internet as we know it, and the applications that sit on top of it, are formed by a variety of protocols that together dictate how information should be sent and received. Each protocol manages a small part of the process, and these protocols are layered to form a complete **protocol stack**.
 
 <p align=“center”>
-  <img src=“https://upload.wikimedia.org/wikipedia/en/a/a6/Internet_layering.svg” />
+  <img src=“images/internet-layering.png” />
 </p>
 [Image Source](https://en.wikipedia.org/wiki/Communication_protocol)
 
@@ -45,11 +41,9 @@ _[Maybe create a quick graphic with sender and receiver demonstrating how TCP ha
 On the receiving side of the connection, the packet passes through the four layers of the Internet protocol suite in reverse order (from link to application). In each layer, the header is removed and interpreted before being passed to the next layer.
 
 <p align=“center”>
-  <img src=“https://docstore.mik.ua/orelly/networking/firewall/figs/fire0602.gif” />
+  <img src=“images/packet-headers.gif” />
 </p>
 [Image Source](http://web.deu.edu.tr/doc/oreily/networking/firewall/ch06_03.htm)
-
-![Packet Headers](https://docstore.mik.ua/orelly/networking/firewall/figs/fire0602.gif)
 
 ## Internet Computer Protocol
 
