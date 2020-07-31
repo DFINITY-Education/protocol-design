@@ -45,6 +45,7 @@ On the receiving side of the connection, the packet passes through the four laye
 <p align=“center”>
   <img src=images/packet-headers.gif />
 </p>
+
 [Image Source](http://web.deu.edu.tr/doc/oreily/networking/firewall/ch06_03.htm)
 
 ## Internet Computer Protocol
