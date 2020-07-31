@@ -25,7 +25,7 @@ _Create a graphic to show (abstractly) how this works with a sender and receiver
 The Internet as we know it, and the applications that sit on top of it, are formed by a variety of protocols that together dictate how information should be sent and received. Each protocol manages a small part of the process, and these protocols are layered to form a complete **protocol stack**.
 
 <p align=“center”>
-  <img src=“https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Internet_layering.svg/1920px-Internet_layering.svg.png” />
+  <img src=“https://upload.wikimedia.org/wikipedia/en/a/a6/Internet_layering.svg” />
 </p>
 [Image Source](https://en.wikipedia.org/wiki/Communication_protocol)
 
@@ -45,9 +45,11 @@ _[Maybe create a quick graphic with sender and receiver demonstrating how TCP ha
 On the receiving side of the connection, the packet passes through the four layers of the Internet protocol suite in reverse order (from link to application). In each layer, the header is removed and interpreted before being passed to the next layer.
 
 <p align=“center”>
-  <img src=“http://web.deu.edu.tr/doc/oreily/networking/firewall/figs/fire0602.gif” />
+  <img src=“https://docstore.mik.ua/orelly/networking/firewall/figs/fire0602.gif” />
 </p>
 [Image Source](http://web.deu.edu.tr/doc/oreily/networking/firewall/ch06_03.htm)
+
+![Packet Headers](https://docstore.mik.ua/orelly/networking/firewall/figs/fire0602.gif)
 
 ## Internet Computer Protocol
 
