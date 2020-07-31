@@ -9,7 +9,7 @@ A **protocol** is a set of rules that establish how electronic devices communica
 As with any form of communication, there is a chance that the data being transmitted gets lost in the process. To increase the reliability and efficiency of data transfer, protocols divide each “message” into smaller pieces of data called **packets**. Each packet has a header, which contains information about the source and destination (akin to a postal address), and body, containing the data itself. If one packet is lost in the process, the device can just resend that one packet instead of resending the entire message. The receiving device reassembles the packets into the original message using the instructions provided by the protocol. 
 
 <p align=“center”>
-  <img src=“images/packets.jpg” />
+  <img src=images/packets.jpg />
 </p>
 
 _Create a graphic to show (abstractly) how this works with a sender and receiver_
