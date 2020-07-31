@@ -1,4 +1,7 @@
 # Module 1: Intro to Protocols, the Internet, and the Internet Computer
+
+_Note: Images are rough placeholders. Some may stay, but would likely be best to re-create them._
+
 ### What is a Protocol?
 
 Imagine that you want to communicate a message to your friend in another room. What steps must you take to successfully relay this message and verify that it was received? Chances are, you first need to get their attention, then speak a language that they understand, and finally wait for a response. Similarly, computers and applications use a related process to send and receive messages through the use of a **protocol**.
@@ -21,6 +24,7 @@ The Internet as we know it, and the applications that sit on top of it, are form
 <p align=“center”>
   <img src=images/internet-layering.png />
 </p>
+
 [Image Source](https://en.wikipedia.org/wiki/Communication_protocol)
 
 The Internet protocol suite is composed of four stacked layers that together specify how data should be addressed, packaged, and received. The **application layer** resides at the top of the suite, providing data exchange for applications such as email, web browsing, text messages, etc. The **transport layer** establishes a connection between hosts and splits the data to be sent into packets. It is responsible for ensuring that packets arrive without error and in the correct order. The **Internet layer** directs each packet provided by the transport layer from one address to another. The bottom layer is the **link layer**, which maintains communications that reside on a single network segment (think devices physically connected via ethernet within a home).
