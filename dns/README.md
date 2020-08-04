@@ -35,7 +35,7 @@ The `ask` function queries the specified `server` for a `domain`. For example, i
 The `parseDomain` function splits a given `domain` into its component parts on the “.” delimiter.  _For simplicity, assume that all domains will not include the typical “www” prefix._ The `resolve` function is left for you to implement.
 
 ## Specification
-**Task**: Complete the implementation of the `resolve` method, which acts the part of a resolver by taking in a `url` and returning the `IpAddresss`. 
+**Task**: Complete the implementation of the `resolve` method, which acts the part of a resolver by taking in a `domain` and returning the corresponding `Principle`. 
 
 **Things to consider:**
 * You must first check if the given `domain` is contained in the `cache`. If so, you can just return the stored `Principle`; otherwise, you must parse the `domain` into its component domain labels (separated by “.”s) and use these to determine the correct IP address. You will find `parseDomain`  helpful in this task.
