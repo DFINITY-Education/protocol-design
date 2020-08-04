@@ -17,7 +17,7 @@ actor {
   let cache = HashMap.HashMap<Domain, Principal>(1, Text.equal, Text.hash);
 
 
-  /// Acts the part of a DNS resolver by resolving the |domain| into a Principal address
+  /// Acts the part of a DNS resolver by resolving the |domain| into a Principal address.
   /// Args:
   ///   |domain|   The domain to be looked up
   /// Returns:
