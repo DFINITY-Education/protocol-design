@@ -9,7 +9,7 @@ actor {
 
   type Domain = Types.Domain;
 
-  let db = HashMap.HashMap<Domain, Principal>(1, Utils.domainEq, Text.hash);
+  private let db = HashMap.HashMap<Domain, Principal>(1, Utils.domainEq, Text.hash);
 
   public shared(msg) func ask(domain : Domain) : async ?Principal {
     db.get(domain)

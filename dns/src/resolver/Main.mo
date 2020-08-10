@@ -1,5 +1,6 @@
 import HashMap "mo:base/HashMap";
 import List "mo:base/List";
+import Log "mo:base/Debug";
 import Principal "mo:base/Principal";
 import Result "mo:base/Result";
 import Text "mo:base/Text";
@@ -8,21 +9,21 @@ import Root "canister:Root";
 
 import Parsing "./Parsing";
 import Types "../Types";
-import NameServer "../nameServer/Main";
 
 actor {
 
   type Domain = Types.Domain;
+  type Error = Types.Error;
+  type Result<S, T> = Result.Result<S, T>;
 
-  let cache = HashMap.HashMap<Domain, Principal>(1, Text.equal, Text.hash);
-
+  private let cache = HashMap.HashMap<Domain, Principal>(1, Text.equal, Text.hash);
 
   /// Acts the part of a DNS resolver by resolving the |domain| into a Principal address.
   /// Args:
   ///   |domain|   The domain to be looked up
   /// Returns:
   ///   The Principle of the given domain
-  ///   Possible errors: #
+  ///   Possible errors: #addressNotFound
   public func resolve(domain: Domain) : async Result<Principal, Error> {
     switch (cache.get(domain)) {
       case (?addr) { return #ok(addr) };
@@ -32,8 +33,8 @@ actor {
         var counter = List.size<Text>(parsedDomain);
         while (counter > 0) {
           server := switch (List.last<Text>(parsedDomain)) {
-            case (null) { return #err(#addressNotFound) };
-            case (?subdomain) { await ask(subdomain, server) };
+            case (null) { return #err(#addressNotFound); };
+            case (?subdomain) { return await ask(subdomain, server); };
           };
           counter -= 1;
           parsedDomain := List.drop<Text>(parsedDomain, counter);
@@ -50,11 +51,14 @@ actor {
       let server = actor (Principal.toText(who)) : actor {
         ask : Types.Domain -> async ?Principal;
       };
-      #ok(server.ask(domain))
+      switch (await server.ask(domain)) {
+        case (?address) { #ok(address) };
+        case (null) { #err(#addressNotFound) };
+      }
     } catch _ {
-      Log.error("Canister unreachable!")
-      #err(addressNotFound)
-    };
+      Log.print("Canister unreachable!");
+      #err(#addressNotFound)
+    }
   };
 
   func parseDomain(domain: Domain) : List.List<Text> {

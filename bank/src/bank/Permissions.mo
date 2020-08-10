@@ -15,14 +15,14 @@ module {
 
     let permissions = HashMap.HashMap<UT, List.List<Principal>>(1, utEq, utHash);
 
-    public func hasPermission(user: Principal, userType: UT) : async Bool {
+    public func hasPermission(user: Principal, userType: UT) : Bool {
       switch (permissions.get(userType)) {
         case (?userList) { List.some<Principal>(userList, func (p: Principal) : Bool { p == user} ) };
         case (null) { false };
       }
     };
 
-    public func addToGroup<G>(user: Principal, userType: UT) : async () {
+    public func addToGroup<G>(user: Principal, userType: UT) {
       switch (permissions.get(userType)) {
         case (?userList) { permissions.put(userType, List.push<Principal>(user, userList)); };
         case (null) { permissions.put(userType, List.make<Principal>(user)); };

@@ -9,6 +9,7 @@ import Utils "./Utils";
 
 actor {
 
+  type Account = Types.Account;
   type Error = Types.Error;
   type Result<V, E> = Result.Result<V, E>;
 
@@ -172,7 +173,7 @@ actor {
     switch banker {
       case (null) {
         banker := ?msg.caller;
-        await permissions.addToGroup(msg.caller, #super);
+        permissions.addToGroup(msg.caller, #super);
 
         #ok()
       };
@@ -181,14 +182,14 @@ actor {
   };
 
   public shared(msg) func openAccount(accountHolder: Principal) {
-    if (await permissions.hasPermission(msg.caller, #super)) {
-       db.updateAccount(accountHolder, Utils.newAccount(0));
+    if (permissions.hasPermission(msg.caller, #super)) {
+      db.updateAccount(accountHolder, Utils.newAccount(0));
     };
   };
 
   public shared(msg) func wipeAccounts() {
-    if (await permissions.hasPermission(msg.caller, #super)) {
-       db.clear();
+    if (permissions.hasPermission(msg.caller, #super)) {
+      db.clear();
     };
   };
 
