@@ -64,6 +64,4 @@ The basis of ICP is a **Peer-to-Peer** (P2P) and **consensus** algorithm. Each t
 
 Additionally, the order in which events are registered in the network matters immensely. Take, for example, a situation where a user wants to simultaneously purchase a car and a boat using money from her bank account that is stored on the IC. For each transaction, two separate computers on opposite sides of the world might check the balance in her account and conclude that she has enough money to individually purchase them. However, once the transactions are processed, the network might realize that she didn’t actually have enough money to purchase both. To resolve this issue, we need consensus. 
 
-_[Maybe insert graphic of nodes and requests]_
-
 Consensus ensures that the read and write events that are gossiped to all computers will be ordered consistently on each computer. If computers start in the same state and execute the same sequence of read/write events, then we have proof that all computers will eventually hold the same final state. 
