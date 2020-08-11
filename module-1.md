@@ -11,9 +11,6 @@ As with any form of communication, there is a chance that the data being transmi
 
 <img align=“center” src=images/packets.jpg />
 
-_Create a graphic to show (abstractly) how this works with a sender and receiver_
-[Sample graphic from https://afteracademy.com/blog/what-is-stop-and-wait-protocol]
-
 ## What is the Internet?
 
 ### The Internet Protocol Suite
@@ -35,8 +32,6 @@ TCP resides in the transport layer of the Internet protocol suite, where it esta
 In the Internet layer, IP takes the packet, which now contains the TCP header and data payload, and applies its own IP header. This header mainly contains the IP address of the source and destination in addition to specifying which transport protocol (often TCP) was used to send the packet. IP is responsible for delivering the packet based on its stated destination address.
 
 The transport layer is like the post office, responsible for packaging items, addressing them, and ensuring they arrive at their destination. The Internet layer is like the actual mail truck, transporting each package along the specified route. 
-
-_[Maybe create a quick graphic with sender and receiver demonstrating how TCP handles missing packets]_
 
 On the receiving side of the connection, the packet passes through the four layers of the Internet protocol suite in reverse order (from link to application). In each layer, the header is removed and interpreted before being passed to the next layer.
 
