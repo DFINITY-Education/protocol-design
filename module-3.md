@@ -12,6 +12,7 @@ The bank canister behaves as you would expect a regular bank should, with some a
 To carry out its role, the bank canister leverages two additional modules: one for database management, and another for permissioning.
 
 The **Database** module is responsible for the retrieval and storage of account holder information.
+
 The **Permissions** module is responsible for maintaining user groups and granting privileges to account holders based on the user group they belong to.
 
 Note that these modules may each serve as independent protocols for other applications to build on top of, they are not necessarily bank-specific.
@@ -35,6 +36,7 @@ In `src/bank/Permissions.mo`, you'll find `hasPermission` and `addToGroup`. The 
 **Task**: Complete the implementation of the `Database` and `Permissions` classes.
 
 `Database.mo`: `findAccount`, `findMultipleAccounts`, `updateAccount`, `clear`
+
 `Permissions.mo`: `hasPermission`, `addToGroup`
 
 ### Testing
@@ -42,10 +44,12 @@ The following test should run to completion:
 ```bash
 > dfx build
 Building canisters...
+
 > dfx canister install --all
 Installing code for canister Bank, with canister_id ic:ABCDEFGHIJKLMNOPQR
 Installing code for canister BankTest, with canister_id: ...
 ...
+
 > dfx canister call Test run
 ()
 ```
