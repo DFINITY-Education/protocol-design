@@ -66,4 +66,4 @@ Additionally, the order in which events are registered in the network matters im
 
 _[Maybe insert graphic of nodes and requests]_
 
-Consensus ensures that the read and write events that are gossiped to all computers will be ordered consistently on each computer. If computers start in the same state and execute the same sequence of read/write events, then we have proof that all computers will eventually hold the same final state. 
+Consensus ensures that the read and write events that are gossiped to all computers will be ordered consistently on each computer. If computers start in the same state and execute the same sequence of read/write events, then we have proof that all computers will eventually hold the same final state.
