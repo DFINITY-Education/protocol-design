@@ -51,6 +51,8 @@ The Internet Protocol suite revolutionized communication and application deploym
 
 At its core, ICP is a protocol that allows decentralized datacenters to virtually form a large, infinitely scalable, resilient and fault-tolerant Internet-scale computer. 
 
+<img align=“center” src=images/ic-photo.png />
+
 The goal is to enable all of the data centers around the world to act as a single computer by using ICP. Fundamentally, a computer must read and write data to access stored memory and record new events. On a single computer, managing this process is relatively easy. However, if you have multiple users spanning the world reading and writing to the same computer, how do you manage such requests?
 
 The basis of ICP is a **Peer-to-Peer** (P2P) and **consensus** algorithm. Each time one computer (datacenter) receives a read/write request, that computer must make the other computers aware that an event is being committed to the IC. P2P ensures that every event gets “gossiped”, or broadcast, to all other computers in the IC network.
