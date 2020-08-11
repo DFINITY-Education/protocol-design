@@ -2,7 +2,7 @@
 Building off of the previous exercise (literally!), provide account holders with additional services utilizing the banking protocol.
 
 ## Background
-As you saw in [Modules 1](./module-1.md) and [2](./module-2.md), a common pattern found in protocol architecture is layering protocols one on top of another. This helps in simplifying the protocol's design by dividing each of its constituants into their own modular layers. How independent each layer is may vary, but this design lends itself well to reusing certain layers for multiple protocols (think about how multiple canisters may leverage the same `Database` class from [Module 3](./module-3.md)).
+As you saw in [Modules 1](./module-1.md) and [2](./module-2.md), a common pattern found in protocol architecture is layering protocols one on top of another in a **protocol stack**. This helps in simplifying the protocol's design by dividing each of its constituants into their own modular layers. How independent each layer is may vary, but this design lends itself well to reusing certain layers for multiple protocols (think about how multiple canisters may leverage the same `Database` class from [Module 3](./module-3.md)).
 
 ### Applications to Build
 The **credit provider** extends a line of credit to customers while levying higher interest rates per transaction.

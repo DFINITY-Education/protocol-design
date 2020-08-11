@@ -1,6 +1,6 @@
 # Module 1: Intro to Protocols, the Internet, and the Internet Computer
 
-### What is a Protocol?
+## What is a Protocol?
 
 Imagine that you want to communicate a message to your friend in another room. What steps must you take to successfully relay this message and verify that it was received? Chances are, you first need to get their attention, then speak a language that they understand, and finally wait for a response. Similarly, computers and applications use a related process to send and receive messages through the use of a **protocol**.
 
