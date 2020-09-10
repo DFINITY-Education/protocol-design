@@ -42,6 +42,8 @@ In `src/bank/Permissions.mo`, you'll find `hasPermission` and `addToGroup`. The 
 ### Testing
 The following test should run to completion:
 ```bash
+> dfx start --background
+> dfx canister create --all
 > dfx build
 Building canisters...
 
