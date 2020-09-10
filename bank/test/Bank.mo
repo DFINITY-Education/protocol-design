@@ -15,8 +15,7 @@ actor {
   private type Result<V, E> = Result.Result<V, E>;
 
   private let accountList: [Principal] = [
-    Principal.fromText("ic:EE8110735D21E9D3EF"),
-    Principal.fromText("ic:PUIY24FTF64GHV2B21")
+    Principal.fromText("mwsbc-m36iz-hqfpr-2r4gx-ayweq-olr4i-hqmow-xnshg-3su4o-4bsmd-mae"),
   ];
 
   // TODO: Test negative case.
