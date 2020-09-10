@@ -19,7 +19,7 @@ module {
         string #= cc;
       }
     };
-    list
+    return List.push<Text>(string, list);
   };
 
 };
