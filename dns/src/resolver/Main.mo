@@ -32,12 +32,12 @@ actor {
         var server = Principal.fromActor(Root);
         var counter = List.size<Text>(parsedDomain);
         while (counter > 0) {
-          server := switch (List.last<Text>(parsedDomain)) {
+          server := switch (List.pop<Text>(parsedDomain).0) {
             case (null) { return #err(#addressNotFound); };
             case (?subdomain) { return await ask(subdomain, server); };
           };
           counter -= 1;
-          parsedDomain := List.drop<Text>(parsedDomain, counter);
+          parsedDomain := List.pop<Text>(parsedDomain).1;
         };
         cache.put(domain, server);
 
