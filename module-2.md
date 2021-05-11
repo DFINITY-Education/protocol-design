@@ -21,8 +21,10 @@ The resolver begins by checking for the queried domain name in its local cache. 
 4. The Authoritative Name Server returns the IP address for the full domain (in this case www.example.com) to the DNS Resolver, which allows the user to connect to that server using the IP address.
 
 <p align="center">
-  <img src="https://miro.medium.com/max/1400/1*20lOJctutX1PTdWzYUbbZQ.png" />
+  <img src="https://miro.medium.com/max/1400/1*20lOJctutX1PTdWzYUbbZQ.png" height="300"/>
 </p>
+
+<p align="center"> <i> Source: <a href="https://medium.com/@openmohan/dns-basics-and-building-simple-dns-server-in-go-6cb8e1cfe461"> Mohan Prasath, Medium</a></i></p>
 
 ## Your Task
 In this exercise, you will implement a simplified version of the DNS protocol described above using the Internet Computer. Given a URL, the canister will follow the basic steps outlined in the **DNS Lookup Process** to determine the corresponding IP address. We will use distinct canisters to represent the Root, TLD, and Authoritative servers, each of which must be queried successively to find the next corresponding server.  You’ll need to use your understanding of the DNS protocol to decide what calls the resolver should make to which server.
