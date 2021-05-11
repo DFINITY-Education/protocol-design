@@ -9,18 +9,17 @@ A **protocol** is a set of rules that establish how electronic devices communica
 ### Packets
 As with any form of communication, there is a chance that the data being transmitted gets lost in the process. To increase the reliability and efficiency of data transfer, protocols divide each “message” into smaller pieces of data called **packets**. Each packet has a header, which contains information about the source and destination (akin to a postal address), and body, containing the data itself. If one packet is lost in the process, the device can just resend that one packet instead of resending the entire message. The receiving device reassembles the packets into the original message using the instructions provided by the protocol. 
 
-<img align=“center” src=images/packets.jpg />
+<p align="center"><img src="images/packets.jpg" height="300"/> </p>
+<p align="center"> <i> Message transmission - Source: <a href="https://afteracademy.com/blog/what-is-stop-and-wait-protocol"> AfterAcademy</a></i></p>
 
 ## What is the Internet?
 
 ### The Internet Protocol Suite
 The Internet as we know it, and the applications that sit on top of it, are formed by a variety of protocols that together dictate how information should be sent and received. Each protocol manages a small part of the process, and these protocols are layered to form a complete **protocol stack**.
 
-<p align=“center”>
-  <img src=images/internet-layering.png />
-</p>
+<p align="center"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Internet_layering.svg/717px-Internet_layering.svg.png" height="300"/> </p>
 
-[Image Source](https://en.wikipedia.org/wiki/Communication_protocol)
+<p align="center"> <i> Internet Protocol Stack. Source: <a href="https://en.wikipedia.org/wiki/Communication_protocol"> Communication Protocol Wiki</a></i></p>
 
 The Internet protocol suite is composed of four stacked layers that together specify how data should be addressed, packaged, and received. The **application layer** resides at the top of the suite, providing data exchange for applications such as email, web browsing, text messages, etc. The **transport layer** establishes a connection between hosts and splits the data to be sent into packets. It is responsible for ensuring that packets arrive without error and in the correct order. The **Internet layer** directs each packet provided by the transport layer from one address to another. The bottom layer is the **link layer**, which maintains communications that reside on a single network segment (think devices physically connected via ethernet within a home).
 
@@ -35,11 +34,11 @@ The transport layer is like the post office, responsible for packaging items, ad
 
 On the receiving side of the connection, the packet passes through the four layers of the Internet protocol suite in reverse order (from link to application). In each layer, the header is removed and interpreted before being passed to the next layer.
 
-<p align=“center”>
-  <img src=images/packet-headers.gif />
+<p align="center">
+  <img src=images/packet-headers.gif height="300"/>
 </p>
 
-[Image Source](http://web.deu.edu.tr/doc/oreily/networking/firewall/ch06_03.htm)
+<p align="center"> <i> TCP/IP Protocol Stack Packets. Source: <a href="http://web.deu.edu.tr/doc/oreily/networking/firewall/ch06_03.htm"> Building Internet Firewalls</a></i></p>
 
 ## Internet Computer Protocol
 
@@ -51,7 +50,8 @@ The Internet Protocol suite revolutionized communication and application deploym
 
 At its core, ICP is a protocol that allows decentralized datacenters to virtually form a large, infinitely scalable, resilient and fault-tolerant Internet-scale computer. 
 
-<img align=“center” src=images/ic-photo.png />
+<p align="center"> <img src=images/ic-photo.png height="300"/> </p>
+<p align="center"> <i> Relating TCP/IP to the Internet Computer Protocol</i></p>
 
 The goal is to enable all of the data centers around the world to act as a single computer by using ICP. Fundamentally, a computer must read and write data to access stored memory and record new events. On a single computer, managing this process is relatively easy. However, if you have multiple users spanning the world reading and writing to the same computer, how do you manage such requests?
 
