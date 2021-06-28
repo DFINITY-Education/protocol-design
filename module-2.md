@@ -48,16 +48,15 @@ The `parseDomain` function splits a given `domain` into its component parts on t
 ### Testing
 The following test should run to completion:
 ```bash
-> dfx build
+> dfx deploy
+Deploying all canisters.
+All canisters have already been created.
 Building canisters...
-
-> dfx canister install --all
-Installing code for canister Bank, with canister_id ic:ABCDEFGHIJKLMNOPQR
-Installing code for canister BankTest, with canister_id: ...
-...
-
-> dfx canister call Test run
-()
+Installing canisters...
+Upgrading code for canister Resolver, with canister_id ABCDEFGHIJKLMNOPQR
+Upgrading code for canister Root, with canister_id ABCDEFGHIJKLMNOPQR
+Upgrading code for canister Test, with canister_id ABCDEFGHIJKLMNOPQR
+Deployed canisters.
 ```
 
 Feel free to experiment with each canister's public methods through the CLI. Here are some ideas to get you started:
