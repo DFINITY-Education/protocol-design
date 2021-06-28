@@ -46,7 +46,7 @@ On the receiving side of the connection, the packet passes through the four laye
 The centralized nature of the current internet stack results in several large companies controlling the primary cloud computing and networking servers. Furthermore, application development and deployment within the current legacy IT stack is tedious and expensive.
 
 ### What is the Internet Computer Protocol?
-The Internet Protocol suite revolutionized communication and application deployment; the **Internet Computer Protocol** (ICP) aims to do the same for the current IT stack.
+The Internet Protocol suite revolutionized communication and application deployment; the **Internet Computer Protocol** (ICP) aims to do the same for the current IT stack with additional functionalities.
 
 At its core, ICP is a protocol that allows decentralized datacenters to virtually form a large, infinitely scalable, resilient and fault-tolerant Internet-scale computer. 
 
