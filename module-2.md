@@ -1,7 +1,7 @@
 # Module 2: Starting off Simple with DNS
 Implement a simplified DNS protocol in Motoko, as seen in the example below:
 ```bash
-> dfx canister call dns resolveSearch '("www.dfinity.org")'
+> dfx canister call Resolver resolve '("www.dfinity.org")'
 ("104.17.224.20")
 ```
 
@@ -62,10 +62,10 @@ Installing code for canister BankTest, with canister_id: ...
 
 Feel free to experiment with each canister's public methods through the CLI. Here are some ideas to get you started:
 ```bash
-> dfx canister call dns resolveSearch '(dfinity.org")'
+> dfx canister call Resolver resolve '("dfinity.org")'
 ("104.17.224.20")
 ```
 ```bash
-> dfx canister call dns isCached '("dfinity.org")'
+> dfx canister call Resolver isCached '("dfinity.org")'
 (true)
 ```
