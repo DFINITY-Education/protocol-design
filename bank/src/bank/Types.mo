@@ -17,6 +17,7 @@ module {
 
   public type AccountEntries = HashMap.HashMap<Principal, Account>;
 
+
   public type Account = {
     var balance: Nat;
     var txns: List.List<Txn>;

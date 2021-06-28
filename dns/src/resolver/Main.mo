@@ -7,6 +7,7 @@ import Text "mo:base/Text";
 
 import Root "canister:Root";
 
+
 import Parsing "./Parsing";
 import Types "../Types";
 
@@ -32,9 +33,14 @@ actor {
         var server = Principal.fromActor(Root);
         var counter = List.size<Text>(parsedDomain);
         while (counter > 0) {
-          server := switch (List.last<Text>(parsedDomain)) {
-            case (null) { return #err(#addressNotFound); };
-            case (?subdomain) { return await ask(subdomain, server); };
+          var name = List.last<Text>(parsedDomain);
+          server := switch (name) {
+            case (null) { 
+              return #err(#addressNotFound); 
+              };
+            case (?subdomain) { 
+              return await ask(subdomain, server); 
+              };
           };
           counter -= 1;
           parsedDomain := List.drop<Text>(parsedDomain, counter);
@@ -51,9 +57,14 @@ actor {
       let server = actor (Principal.toText(who)) : actor {
         ask : Types.Domain -> async ?Principal;
       };
-      switch (await server.ask(domain)) {
-        case (?address) { #ok(address) };
-        case (null) { #err(#addressNotFound) };
+      var result = await server.ask(domain);
+      switch (result) {
+        case (?address) { 
+          #ok(address) 
+          };
+        case (null) { 
+          #err(#addressNotFound) 
+          };
       }
     } catch _ {
       Log.print("Canister unreachable!");

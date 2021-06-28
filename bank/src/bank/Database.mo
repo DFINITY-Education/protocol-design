@@ -8,6 +8,7 @@ import Utils "./Utils";
 module {
 
   type Account = Types.Account;
+  //type AccountEntries = Types.AccountEntries;
 
   /// A basic database object built on a standard HashMap data structure.
   /// @dev Methods in this class carry out atomic operations on the data structure.
@@ -16,7 +17,9 @@ module {
   public class Database() {
     // TODO: Fix this to use the definitions in `Types`
     let localDB = HashMap.HashMap<Principal, Account>(1, Utils.principalEq, Principal.hash);
-
+    //let localDB: AccountEntries = AccountEntries(1, Utils.principalEq, Principal.hash);
+    //let localDB = AccountEntries(1, Utils.principalEq, Principal.hash);
+    //constructor call for AccountEntries
     /// Retrieves Account opened by |accountHolder|, if it exists.
     /// Args:
     ///   |accountHolder|   The Principal to look up.

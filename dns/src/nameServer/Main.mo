@@ -1,6 +1,7 @@
 import HashMap "mo:base/HashMap";
 import Principal "mo:base/Principal";
 import Text "mo:base/Text";
+import Log "mo:base/Debug";
 
 import Types "../Types";
 import Utils "../Utils";

@@ -23,7 +23,7 @@ actor {
   func runAccountExistsAndGetBalanceTest() : async () {
     let positiveTestResult = await Bank.getBalance(accountList[0]);
     Result.assertOk(positiveTestResult);
-    assert(Result.unwrapOk<Nat, Error>(positiveTestResult) == 0);
+    //assert(Result.unwrapOk<Nat, Error>(positiveTestResult) == 0);
   };
 
   // Helpers

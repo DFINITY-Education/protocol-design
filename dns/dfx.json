@@ -19,7 +19,5 @@
       "port": 8000,
       "serve_root": "canisters/dns/assets"
     }
-  },
-  "dfx": "0.6.2",
-  "version": 1
+  }
 }

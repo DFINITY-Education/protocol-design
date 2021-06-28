@@ -1,6 +1,8 @@
 import Char "mo:base/Char";
 import List "mo:base/List";
 import Text "mo:base/Text";
+import Log "mo:base/Debug";
+
 
 import Types "../Types";
 
@@ -14,12 +16,14 @@ module {
       if (cc == delimiter) {
         list := List.push<Text>(string, list);
         string := "";
-        // continue
       } else {
         string #= cc;
       }
     };
-    list
+
+    list := List.push<Text>(string, list);
+    var list2 = List.reverse<Text>(list);   
+    list2
   };
 
 };
