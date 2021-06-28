@@ -18,7 +18,7 @@ The **Permissions** module is responsible for maintaining user groups and granti
 Note that these modules may each serve as independent protocols for other applications to build on top of, they are not necessarily bank-specific.
 
 ## Your Task
-In this exercise, you will implement the aforementioned libraries for the bank to use. You’ll need to use your understanding of the bank's operations to ensure that the libraries are leverages successfully.
+In this exercise, you will implement the aforementioned libraries for the bank to use. You’ll need to use your understanding of the bank's operations to ensure that the libraries are leveraged successfully.
 
 ### Code Understanding
 After navigating to the [bank/](./bank), let’s take a look at the code in _src/bank/Main.mo_. You will find the expected methods `getTotalSupply`, `getBalance`, `deposit`, `withdraw`, and `transfer` are all fully implemented. You will also see that the `Database` and `Permissions` classes are initialized:
