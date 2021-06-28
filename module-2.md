@@ -59,8 +59,6 @@ Upgrading code for canister Test, with canister_id ABCDEFGHIJKLMNOPQR
 Deployed canisters.
 ```
 Please read Instructor notes in nameServer.mo for the following methods to produce the following results:
-
-Feel free to experiment with each canister's public methods through the CLI. Here are some ideas to get you started:
 ```bash
 > dfx canister call Resolver resolve '("dfinity.org")'
 ("104.17.224.20")
