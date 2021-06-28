@@ -15,11 +15,7 @@ module {
   ///      No assumptions are made, e.g. whether a user carries a sufficient balance.
   ///      Canisters using this class should do their own error checking.
   public class Database() {
-    // TODO: Fix this to use the definitions in `Types`
     let localDB = HashMap.HashMap<Principal, Account>(1, Utils.principalEq, Principal.hash);
-    //let localDB: AccountEntries = AccountEntries(1, Utils.principalEq, Principal.hash);
-    //let localDB = AccountEntries(1, Utils.principalEq, Principal.hash);
-    //constructor call for AccountEntries
     /// Retrieves Account opened by |accountHolder|, if it exists.
     /// Args:
     ///   |accountHolder|   The Principal to look up.
