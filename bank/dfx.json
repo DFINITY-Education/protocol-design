@@ -1,35 +1,17 @@
 {
+  "dfx": "0.7.2",
   "canisters": {
     "Bank": {
       "main": "src/bank/Main.mo"
     },
-    "BankTest": {
-      "main": "test/Bank.mo"
-    },
     "CreditProvider": {
       "main": "src/creditProvider/Main.mo"
-    },
-    "CreditProviderTest": {
-      "main": "test/CreditProvider.mo"
     },
     "Shop": {
       "main": "src/shop/Main.mo"
     },
-    "ShopTest": {
-      "main": "test/Shop.mo"
-    },
     "Test": {
       "main": "test/Main.mo"
-    }
-  },
-  "defaults": {
-    "build": {
-      "output": "canisters/"
-    },
-    "start": {
-      "address": "127.0.0.1",
-      "port": 8000,
-      "serve_root": "canisters/bank/assets"
     }
   }
 }

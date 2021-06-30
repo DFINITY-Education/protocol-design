@@ -42,12 +42,12 @@ In `src/bank/Permissions.mo`, you'll find `hasPermission` and `addToGroup`. The 
 ### Testing
 The following test should run to completion:
 ```bash
-> dfx build
+> dfx deploy
+Deploying all canisters.
+All canisters have already been created.
 Building canisters...
-
-> dfx canister install --all
-Installing code for canister Bank, with canister_id ic:ABCDEFGHIJKLMNOPQR
-Installing code for canister BankTest, with canister_id: ...
+Installing canisters...
+Installing code for canister Bank, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
 ...
 
 > dfx canister call Test run

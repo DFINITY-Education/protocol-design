@@ -1,4 +1,4 @@
-actor {
+actor class ShopTest() {
 
   /** YOUR CODE HERE */
 

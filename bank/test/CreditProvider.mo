@@ -1,4 +1,4 @@
-actor {
+actor class CreditProviderTest() {
 
   /** YOUR CODE HERE */
 

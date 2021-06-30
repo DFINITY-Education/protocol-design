@@ -1,13 +1,22 @@
-import BankTest "canister:BankTest";
-import CreditProviderTest "canister:CreditProviderTest";
-import ShopTest "canister:ShopTest";
+import BankTest "./Bank";
+import CreditProviderTest "./CreditProvider";
+import ShopTest "./Shop";
 
 actor {
 
-  public func run() {
-    BankTest.run();
-    CreditProviderTest.run();
-    ShopTest.run();
-  };
+    public func run() {
+        let bankTest = await BankTest.BankTest();
+        bankTest.run();
+    };
+
+    public func runCreditProviderTest() {
+        let creditProviderTest = await CreditProviderTest.CreditProviderTest();
+        creditProviderTest.run();
+    };
+
+    public func runShopTest() {
+        let shopTest = await ShopTest.ShopTest();
+        shopTest.run();
+    };
 
 };

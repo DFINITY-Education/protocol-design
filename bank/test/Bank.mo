@@ -9,7 +9,7 @@ import Bank "canister:Bank";
 import Types "../src/bank/Types";
 import Utils "../src/bank/Utils";
 
-actor {
+actor class BankTest() {
 
   private type Error = Types.Error;
   private type Result<V, E> = Result.Result<V, E>;
@@ -22,8 +22,12 @@ actor {
   // TODO: Test negative case.
   func runAccountExistsAndGetBalanceTest() : async () {
     let positiveTestResult = await Bank.getBalance(accountList[0]);
-    Result.assertOk(positiveTestResult);
-    assert(Result.unwrapOk<Nat, Error>(positiveTestResult) == 0);
+    switch (positiveTestResult) {
+      case (#ok(result)) {
+        assert(result == 0);
+      };
+      case (_) { assert false; }
+    };
   };
 
   // Helpers

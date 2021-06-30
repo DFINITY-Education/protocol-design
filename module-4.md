@@ -22,17 +22,13 @@ After navigating to the [bank/](./bank), let’s take a look at the code in _src
 ### Testing
 Either of the following tests should run to completion depending on which you chose:
 ```bash
-dfx canister call CreditProviderTest run
+dfx canister call Test runCreditProviderTest
 ()
 ```
 ```bash
-dfx canister call ShopTest run
+dfx canister call Test runShopTest
 ()
 ```
 
 ### Bonus
-Complete all applications under `src/`. The following test should run to completion:
-```bash
-dfx canister call Test run
-()
-```
+Complete all applications under `src/`. See the above instructions for testing your implementation.
