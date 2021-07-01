@@ -30,17 +30,17 @@ The resolver begins by checking for the queried domain name in its local cache. 
 In this exercise, you will implement a simplified version of the DNS protocol described above using the Internet Computer. Given a URL, the canister will follow the basic steps outlined in the **DNS Lookup Process** to determine the corresponding IP address. We will use distinct canisters to represent the Root, TLD, and Authoritative servers, each of which must be queried successively to find the next corresponding server.  You’ll need to use your understanding of the DNS protocol to decide what calls the resolver should make to which server.
 
 ### Code Understanding
-After navigating to the [dns/](./dns) directory, let’s take a look at the code in _src/resolver/Main.mo_. The `cache` is our HashMap used to store recently looked-up `domain`s and their corresponding `Principle`. In the Internet Computer, a Principle is a unique identifier - like an IP address - for a canister. As such, our program will return a Principle for a given domain instead of an IP address.
+After navigating to the [dns/](./dns) directory, let’s take a look at the code in _src/resolver/Main.mo_. The `cache` is our HashMap used to store recently looked-up `domain`s and their corresponding `Principal`. In the Internet Computer, a Principal is a unique identifier - like an IP address - for a canister. As such, our program will return a Principal for a given domain instead of an IP address.
 
-The `ask` function queries the specified `server` for a `domain`. For example, if you query the `Root` server for the `com` subdomain, the `Root` server will return the Principle of the TLD server corresponding with `com`.  If, however, you call the authoritative name server with the main domain `dfinity` (in our example of dfinity.com),  `ask` will return the final Principle that you’re looking for.  In this way, `ask` can be used to query all of the servers described in the **DNS Lookup Process** section for their respective subdomains.
+The `ask` function queries the specified `server` for a `domain`. For example, if you query the `Root` server for the `com` subdomain, the `Root` server will return the Principal of the TLD server corresponding with `com`.  If, however, you call the authoritative name server with the main domain `dfinity` (in our example of dfinity.com),  `ask` will return the final Principal that you’re looking for.  In this way, `ask` can be used to query all of the servers described in the **DNS Lookup Process** section for their respective subdomains.
 
 The `parseDomain` function splits a given `domain` into its component parts on the "." delimiter.  _For simplicity, assume that all domains will not include the typical "www" prefix._ The `resolve` function is left for you to implement.
 
 ### Specification
-**Task**: Complete the implementation of the `resolve` method, which acts the part of a resolver by taking in a `domain` and returning the corresponding `Principle`. 
+**Task**: Complete the implementation of the `resolve` method, which acts the part of a resolver by taking in a `domain` and returning the corresponding `Principal`. 
 
 **Things to consider:**
-* You must first check if the given `domain` is contained in the `cache`. If so, you can just return the stored `Principle`; otherwise, you must parse the `domain` into its component domain labels (separated by "."s) and use these to determine the correct IP address. You will find `parseDomain`  helpful in this task.
+* You must first check if the given `domain` is contained in the `cache`. If so, you can just return the stored `Principal`; otherwise, you must parse the `domain` into its component domain labels (separated by "."s) and use these to determine the correct IP address. You will find `parseDomain`  helpful in this task.
 * You should verify that your parsed domain actually contains values. If it is `null`, you should return the `#addressNotFound` error.
 * After parsing the `url`, you must use the resulting domain labels to call the corresponding servers in the correct order. 
 * Note that a `domain` doesn’t contain a set number of domain labels. While most URLs, such as example.com, have two domain labels, some may contain subdomains like subdomain.example.com. _Additionally, assume that all domains will not include the typical "www" prefix._
