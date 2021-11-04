@@ -21,16 +21,16 @@ The Internet as we know it, and the applications that sit on top of it, are form
 
 <p align="center"> <i> Internet Protocol Stack. Source: <a href="https://en.wikipedia.org/wiki/Communication_protocol"> Communication Protocol Wiki</a></i></p>
 
-The Internet protocol suite is composed of four stacked layers that together specify how data should be addressed, packaged, and received. The **application layer** resides at the top of the suite, providing data exchange for applications such as email, web browsing, text messages, etc. The **transport layer** establishes a connection between hosts and splits the data to be sent into packets. It is responsible for ensuring that packets arrive without error and in the correct order. The **Internet layer** directs each packet provided by the transport layer from one address to another. The bottom layer is the **link layer**, which maintains communications that reside on a single network segment (think devices physically connected via ethernet within a home).
+The Internet protocol suite is composed of four stacked layers that together specify how data should be addressed, packaged, and received. The **application layer** resides at the top of the suite, providing data exchange for applications such as email, web browsing, text messages, etc. The **transport layer** establishes a connection between hosts and splits the data to be sent into packets. It is responsible for ensuring that packets arrive without error and in the correct order. The **internet layer** directs each packet provided by the transport layer from one address to another. The bottom layer is the **link layer**, which maintains communications that reside on a single network segment (think devices physically connected via ethernet within a home).
 
 Each layer has several possible protocols that can be used. We’ll focus on the two most prominent ones: Transmission Control Protocol (TCP) and the Internet Protocol (IP), often referred to as TCP/IP as shorthand for “TCP over IP” (shown in the Internet Protocol Suite diagram).
 
 ### TCP/IP
 TCP resides in the transport layer of the Internet protocol suite, where it establishes connections between hosts and packages data into packets. TCP creates packets by dividing the message into smaller pieces of data and adding a TCP header. Each packet is given a number, allowing the receiving device to assemble messages in the correct order. TCP also performs error checking to ensure that each packet is delivered. Once the receiver receives a packet, it must send back an acknowledgment message to the sender. If the sender doesn’t receive an acknowledgment within a reasonable time, the sender assumes the message was lost or corrupted and resends the packet.
 
-In the Internet layer, IP takes the packet, which now contains the TCP header and data payload, and applies its own IP header. This header mainly contains the IP address of the source and destination in addition to specifying which transport protocol (often TCP) was used to send the packet. IP is responsible for delivering the packet based on its stated destination address.
+In the internet layer, IP takes the packet, which now contains the TCP header and data payload, and applies its own IP header. This header mainly contains the IP address of the source and destination in addition to specifying which transport protocol (often TCP) was used to send the packet. IP is responsible for delivering the packet based on its stated destination address.
 
-The transport layer is like the post office, responsible for packaging items, addressing them, and ensuring they arrive at their destination. The Internet layer is like the actual mail truck, transporting each package along the specified route. 
+The transport layer is like the post office, responsible for packaging items, addressing them, and ensuring they arrive at their destination. The internet layer is like the actual mail truck, transporting each package along the specified route. 
 
 On the receiving side of the connection, the packet passes through the four layers of the Internet protocol suite in reverse order (from link to application). In each layer, the header is removed and interpreted before being passed to the next layer.
 
@@ -43,19 +43,19 @@ On the receiving side of the connection, the packet passes through the four laye
 ## Internet Computer Protocol
 
 ### The Impetus
-The centralized nature of the current internet stack results in several large companies controlling the primary cloud computing and networking servers. Furthermore, application development and deployment within the current legacy IT stack is tedious and expensive.
+The centralized nature of the software stack that underlies most of today's applications results in several large companies controlling the primary cloud computing and networking servers. Furthermore, application development and deployment within the current legacy IT stack is tedious and expensive.
 
 ### What is the Internet Computer Protocol?
-The Internet Protocol suite revolutionized communication and application deployment; the **Internet Computer Protocol** (ICP) aims to do the same for the current IT stack with additional functionalities.
+The Internet protocol suite revolutionized communication and application deployment; the **Internet Computer Protocol** (ICP) aims to do the same for the current IT stack with additional functionalities.
 
-At its core, ICP is a protocol that allows decentralized datacenters to virtually form a large, infinitely scalable, resilient and fault-tolerant Internet-scale computer. 
+At its core, ICP is a blockchain protocol that virtually forms a large, infinitely scalable, resilient and fault-tolerant Internet-scale computer that runs software in the form of smart contracts. 
 
 <p align="center"> <img src=images/ic-photo.png height="300"/> </p>
 <p align="center"> <i> Relating TCP/IP to the Internet Computer Protocol</i></p>
 
-The goal is to enable all of the data centers around the world to act as a single computer by using ICP. Fundamentally, a computer must read and write data to access stored memory and record new events. On a single computer, managing this process is relatively easy. However, if you have multiple users spanning the world reading and writing to the same computer, how do you manage such requests?
+ICP enables independent data centers from around the world to emulate a single virtual computer. Fundamentally, a computer must read and write data to access stored memory and record new events. On a single computer, managing this process is relatively easy. However, if you have multiple users spanning the world reading and writing to the same computer, how do you manage such requests?
 
-The basis of ICP is a **Peer-to-Peer** (P2P) and **consensus** algorithm. Each time one computer (datacenter) receives a read/write request, that computer must make the other computers aware that an event is being committed to the IC. P2P ensures that every event gets “gossiped”, or broadcast, to all other computers in the IC network.
+The basis of ICP is formed by **peer-to-peer** (P2P) and **consensus** protocols. Each time one computer (datacenter) receives a read/write request, that computer must make the other computers aware that an event is being committed to the IC. P2P ensures that every event gets “gossiped”, or broadcast, to all other computers in the IC network.
 
 Additionally, the order in which events are registered in the network matters immensely. Take, for example, a situation where a user wants to simultaneously purchase a car and a boat using money from her bank account that is stored on the IC. For each transaction, two separate computers on opposite sides of the world might check the balance in her account and conclude that she has enough money to individually purchase them. However, once the transactions are processed, the network might realize that she didn’t actually have enough money to purchase both. To resolve this issue, we need consensus. 
 

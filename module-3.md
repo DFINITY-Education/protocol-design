@@ -26,7 +26,7 @@ After navigating to the [bank/](./bank), let’s take a look at the code in _src
 var db: Database.Database = Database.Database();
 var permissions: Permissions.Permissions = Permissions.Permissions();
 ```
-Note how each is used, the arguements their methods take, and whether they are expected to return a value.
+Note how each is used, the arguments their methods take, and whether they are expected to return a value.
 
 In `src/bank/Database.mo`, you'll find `findAccount`, `findMultipleAccounts`, `updateAccount`, and `clear`. Each of these makes calls to the underlying `localDB` HashMap. More specifically, `findAccount` and `updateAccount` are the getter and setter methods, respectively, while `findMultipleAccounts` is simply `findAccount` called on multiple inputs. Notice how none of these methods are permissioned, meaning anyone may be able to call a dangerous method like `clear`. It is up to the implementer—the bank canister in this case—to ensure permissions are set up appropriately.
 

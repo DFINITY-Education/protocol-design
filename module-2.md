@@ -6,7 +6,7 @@ Implement a simplified DNS protocol in Motoko, as seen in the example below:
 ```
 
 ## Background
-Computers use an **Internet Protocol** (IP) address to locate and distinguish websites, but it isn’t exactly convenient for humans to memorize a long string of digits to access their desired websites. Instead, we simply type in the website’s address to our browser and let the computer take care of the rest. **Domain Name System** (DNS) is a protocol that translates domain names - like [www.example.com](w) - into their corresponding IP addresses. In essence, think of DNS as a phonebook for the Internet; in this analogy, contact names are to web domains as phone numbers are to IP addresses.
+Computers use an **Internet Protocol** (IP) address to locate and distinguish websites, but it isn’t exactly convenient for humans to memorize a long string of digits to access their desired websites. Instead, we simply type in the website’s domain name to our browser and let the computer take care of the rest. **Domain Name System** (DNS) is a protocol that translates domain names - like [www.example.com](w) - into their corresponding IP addresses. In essence, think of DNS as a phonebook for the Internet; in this analogy, contact names are to web domains as phone numbers are to IP addresses.
 
 ### DNS Resolution
 When a DNS query is conducted, a DNS Resolver splits the domain name from right to left at the "." delimiter. For example, the domain "[www.subdomain.example.com](http://www.example.com/)" is split into three parts: ".com", ".example", and ".subdomain". Each of these domain labels are used as stepping stones to help determine the ultimate IP address of the original query.
